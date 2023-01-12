@@ -1,5 +1,12 @@
+import Form from "./Form";
+
 function App() {
-  return <div>TU BĘDZIE PRZELICZNIK WALUT</div>;
+  return (
+    <>
+      <h1 className="heading">Kalkulator walutowy</h1>
+      <Form />
+    </>
+  );
 }
 
 export default App;
