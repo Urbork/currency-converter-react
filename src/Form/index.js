@@ -7,6 +7,14 @@ const Form = () => {
   const [amount, setAmount] = useState("");
   const [result, setResult] = useState("N/A");
 
+  const currenciesList = currencies.map((currency) => {
+    return (
+      <option value={currency.shortcut}>
+        {currency.shortcut} - {currency.name}
+      </option>
+    );
+  });
+
   const onSelectChange = ({ target }) => setCurrency(target.value);
 
   const onFormChange = () => {
@@ -44,10 +52,7 @@ const Form = () => {
               value={currency}
               onChange={onSelectChange}
             >
-              <option value="EUR">EUR - euro</option>
-              <option value="USD">USD - dolar amerykański</option>
-              <option value="GBP">GBP - funt brytyjski</option>
-              <option value="CHF">CHF - frank szwajcarski</option>
+              {currenciesList}
             </select>
           </label>
         </p>
