@@ -5,7 +5,10 @@ import { currencies } from "../currencies/currencies";
 const Form = () => {
   const [amount, setAmount] = useState("");
   const [currency, setCurrency] = useState(currencies[0].shortcut);
-  const [result, setResult] = useState(0);
+  const [result, setResult] = useState({
+    toAmount: 0,
+    fromAmount: 0,
+  });
 
   const currenciesList = currencies.map((currency) => {
     return (
@@ -17,7 +20,11 @@ const Form = () => {
 
   const showResult = (currency, amount) => {
     const rate = currencies.find(({ shortcut }) => shortcut === currency).rate;
-    setResult(amount / rate);
+    setResult({
+      fromAmount: amount,
+      toAmount: amount / rate,
+      currency: currency,
+    });
   };
 
   const onAmountChange = ({ target }) => setAmount(target.value);
@@ -30,7 +37,10 @@ const Form = () => {
   };
 
   const reset = () => {
-    setResult(0);
+    setResult({
+      fromAmount: 0,
+      toAmount: 0,
+    });
     setAmount("");
     setCurrency(currencies[0].shortcut);
   };
@@ -81,7 +91,11 @@ const Form = () => {
         </button>
       </p>
       <p>
-        Wynik: <strong>{result.toFixed(2)}</strong>
+        Wynik:{" "}
+        <strong>
+          {result.fromAmount} PLN = {result.toAmount.toFixed(2)}{" "}
+          {result.currency}
+        </strong>
       </p>
     </form>
   );
