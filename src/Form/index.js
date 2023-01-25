@@ -13,7 +13,7 @@ const Form = () => {
   });
 
   const currenciesList = currencies.map((currency) => (
-    <option key={currency.id} value={currency.shortcut}>
+    <option key={currency.name} value={currency.shortcut}>
       {currency.shortcut} - {currency.name}
     </option>
   ));
