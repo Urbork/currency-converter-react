@@ -1,12 +1,11 @@
-import Container from "./Container";
 import Form from "./Form";
 
 function App() {
   return (
-    <Container>
+    <main>
       <h1 className="heading">Kalkulator walutowy</h1>
       <Form />
-    </Container>
+    </main>
   );
 }
 
