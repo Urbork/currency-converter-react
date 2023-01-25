@@ -2,24 +2,25 @@ import "./style.css";
 import { useState } from "react";
 import { currencies } from "../currencies/currencies";
 
+const DEFAULT_CURRENCY = currencies[0].shortcut;
+
 const Form = () => {
   const [amount, setAmount] = useState("");
-  const [currency, setCurrency] = useState(currencies[0].shortcut);
+  const [currency, setCurrency] = useState(DEFAULT_CURRENCY);
   const [result, setResult] = useState({
     toAmount: 0,
     fromAmount: 0,
   });
 
-  const currenciesList = currencies.map((currency) => {
-    return (
-      <option key={currency.id} value={currency.shortcut}>
-        {currency.shortcut} - {currency.name}
-      </option>
-    );
-  });
+  const currenciesList = currencies.map((currency) => (
+    <option key={currency.id} value={currency.shortcut}>
+      {currency.shortcut} - {currency.name}
+    </option>
+  ));
 
-  const showResult = (currency, amount) => {
+  const updateResult = (currency, amount) => {
     const rate = currencies.find(({ shortcut }) => shortcut === currency).rate;
+
     setResult({
       fromAmount: amount,
       toAmount: amount / rate,
@@ -33,7 +34,8 @@ const Form = () => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    showResult(currency, amount);
+
+    updateResult(currency, amount);
   };
 
   const reset = () => {
@@ -42,7 +44,7 @@ const Form = () => {
       toAmount: 0,
     });
     setAmount("");
-    setCurrency(currencies[0].shortcut);
+    setCurrency(DEFAULT_CURRENCY);
   };
 
   return (
