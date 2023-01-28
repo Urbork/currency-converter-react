@@ -1,10 +1,11 @@
+import Heading from "./Heading";
 import Form from "./Form";
 import DateAndTime from "./DateAndTime";
 
 function App() {
   return (
     <main>
-      <h1 className="heading">Kalkulator walutowy</h1>
+      <Heading title="Kalkulator walutowy" />
       <DateAndTime />
       <Form />
     </main>
