@@ -1,4 +1,4 @@
-import "./style.css";
+import { DateElement } from "./styled.js";
 import { useEffect, useState } from "react";
 
 const DateAndTime = () => {
@@ -16,7 +16,7 @@ const DateAndTime = () => {
 
   return (
     <>
-      <p className="currentDate">
+      <DateElement className="currentDate">
         Dziś jest{" "}
         {currentDate.toLocaleString(undefined, {
           weekday: "long",
@@ -27,7 +27,7 @@ const DateAndTime = () => {
           minute: "2-digit",
           second: "2-digit",
         })}
-      </p>
+      </DateElement>
     </>
   );
 };
