@@ -1,6 +1,6 @@
-import "./style.css";
 import { useState } from "react";
 import { currencies } from "../currencies/currencies";
+import { MainForm, Fieldset, FormLegend, FormLabel, FormInput, FormSelect, FormButton } from "./styled.js";
 
 const DEFAULT_CURRENCY = currencies[0].shortcut;
 
@@ -48,14 +48,13 @@ const Form = () => {
   };
 
   return (
-    <form className="form" onSubmit={onFormSubmit}>
-      <fieldset className="form__fieldset">
-        <legend className="form__legend">Chcę wymienić</legend>
+    <MainForm onSubmit={onFormSubmit}>
+      <Fieldset>
+        <FormLegend>Chcę wymienić</FormLegend>
         <p>
-          <label className="form__label">
+          <FormLabel>
             Kwota w PLN*:
-            <input
-              className="form__input"
+            <FormInput
               type="number"
               placeholder="podaj kwotę"
               min="0"
@@ -65,32 +64,31 @@ const Form = () => {
               value={amount}
               onChange={onAmountChange}
             />
-          </label>
+          </FormLabel>
         </p>
         <p>
-          <label className="form__label">
+          <FormLabel>
             Chcę otrzymać:
-            <select
-              className="form__input"
+            <FormSelect
               name="currency"
               value={currency}
               onChange={onSelectChange}
             >
               {currenciesList}
-            </select>
-          </label>
+            </FormSelect>
+          </FormLabel>
         </p>
-      </fieldset>
+      </Fieldset>
       <p>* - Pole obowiązkowe</p>
       <p>
-        <button className="form__button">Przelicz</button>
-        <button
-          className="form__button form__button--reset"
+        <FormButton>Przelicz</FormButton>
+        <FormButton
+          reset
           type="reset"
           onClick={reset}
         >
           Wyczyść
-        </button>
+        </FormButton>
       </p>
       <p>
         Wynik:{" "}
@@ -99,7 +97,7 @@ const Form = () => {
           {result.currency}
         </strong>
       </p>
-    </form>
+    </MainForm>
   );
 };
 

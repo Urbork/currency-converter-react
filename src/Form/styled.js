@@ -35,6 +35,14 @@ export const FormInput = styled.input`
     border-radius: 8px;
 `;
 
+export const FormSelect = styled.select`
+    width: 30%;
+    margin-left: 16px;
+    padding: 8px;
+    border: 2px solid rgb(120, 165, 50);
+    border-radius: 8px;
+`;
+
 export const FormButton = styled.button`
     margin: 0 16px;
     padding: 8px 16px;
