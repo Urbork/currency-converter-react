@@ -6,19 +6,19 @@ export const MainForm = styled.form`
   max-width: 800px;
   background-color: white;
   border-radius: 16px;
-  box-shadow: 0 2px 10px #222;
+  box-shadow: 0 2px 10px ${({ theme }) => theme.color.black};
 `;
 
 export const Fieldset = styled.fieldset`
   border-radius: 8px;
-  background-color: whitesmoke;
+  background-color: ${({ theme }) => theme.color.white};
 `;
 
 export const FormLegend = styled.legend`
   padding: 8px 16px;
   font-weight: 700;
-  background-color: rgb(120, 165, 50);
-  color: whitesmoke;
+  background-color: ${({ theme }) => theme.color.green};
+  color: ${({ theme }) => theme.color.white};
   border: none;
   border-radius: 8px;
 `;
@@ -31,7 +31,7 @@ export const FormInput = styled.input`
   width: 30%;
   margin-left: 16px;
   padding: 8px;
-  border: 2px solid rgb(120, 165, 50);
+  border: 2px solid ${({ theme }) => theme.color.green};
   border-radius: 8px;
 `;
 
@@ -39,7 +39,7 @@ export const FormSelect = styled.select`
   width: 30%;
   margin-left: 16px;
   padding: 8px;
-  border: 2px solid rgb(120, 165, 50);
+  border: 2px solid ${({ theme }) => theme.color.green};
   border-radius: 8px;
 `;
 
@@ -47,16 +47,18 @@ export const FormButton = styled.button`
   margin: 0 16px;
   padding: 8px 16px;
   font-weight: 700;
-  background-color: whitesmoke;
-  color: rgb(120, 165, 50);
-  border: 2px solid rgb(120, 165, 50);
+  background-color: ${({ theme }) => theme.color.white};
+  color: ${({ theme }) => theme.color.green};
+  border: 2px solid ${({ theme }) => theme.color.green};
   border-radius: 8px;
-  box-shadow: 0 1px 5px rgb(120, 165, 50);
+  box-shadow: 0 1px 5px ${({ theme }) => theme.color.green};
+  transition: 0.5s;
   cursor: pointer;
 
   &:hover {
-    background-color: rgb(120, 165, 50);
-    color: whitesmoke;
+    background-color: ${({ theme }) => theme.color.green};
+    color: ${({ theme }) => theme.color.white};
+    transform: scale(1.1);
   }
 
   ${({ reset }) =>
