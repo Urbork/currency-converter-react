@@ -1,6 +1,14 @@
 import { useState } from "react";
 import { currencies } from "../currencies/currencies";
-import { MainForm, Fieldset, FormLegend, FormLabel, FormInput, FormSelect, FormButton } from "./styled.js";
+import {
+  MainForm,
+  Fieldset,
+  FormLegend,
+  FormLabel,
+  FormInput,
+  FormSelect,
+  FormButton,
+} from "./styled.js";
 
 const DEFAULT_CURRENCY = currencies[0].shortcut;
 
@@ -82,11 +90,7 @@ const Form = () => {
       <p>* - Pole obowiązkowe</p>
       <p>
         <FormButton>Przelicz</FormButton>
-        <FormButton
-          reset
-          type="reset"
-          onClick={reset}
-        >
+        <FormButton reset type="reset" onClick={reset}>
           Wyczyść
         </FormButton>
       </p>
