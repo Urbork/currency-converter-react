@@ -6,7 +6,6 @@ import {
   FormLegend,
   FormLabel,
   FormInput,
-  FormSelect,
   FormButton,
 } from "./styled.js";
 
@@ -77,13 +76,14 @@ const Form = () => {
         <p>
           <FormLabel>
             Chcę otrzymać:
-            <FormSelect
+            <FormInput
+              as="select"
               name="currency"
               value={currency}
               onChange={onSelectChange}
             >
               {currenciesList}
-            </FormSelect>
+            </FormInput>
           </FormLabel>
         </p>
       </Fieldset>
