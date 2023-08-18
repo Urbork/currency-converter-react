@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { currencies } from "../currencies/currencies";
+import { useRatesData } from "./useRatesData";
 import {
   MainForm,
   Fieldset,
@@ -18,6 +19,17 @@ const Form = () => {
     toAmount: 0,
     fromAmount: 0,
   });
+
+  const { ratesData, isLoading, ratesError } = useRatesData;
+  console.log(ratesData, isLoading, ratesError);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (ratesError) {
+    return <div>Error: {ratesError.message}</div>;
+  }
 
   const currenciesList = currencies.map((currency) => (
     <option key={currency.name} value={currency.shortcut}>
