@@ -10,18 +10,19 @@ export const useRatesData = () => {
     // const requestURL =
     //   "https://api.exchangerate.host/latest?base=PLN&symbols=EUR,USD,GBP,CHF";
 
-    fetch(requestURL)
-      .then((response) => response.json())
-      .then((data) => {
-        setIsLoading(false);
-        setRatesData(data.rates);
-        console.log(data.rates);
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        setRatesError(error);
-        console.error("Something bad happened!", error);
-      });
+    setTimeout(() => {
+      fetch(requestURL)
+        .then((response) => response.json())
+        .then((data) => {
+          setIsLoading(false);
+          setRatesData(data.rates);
+        })
+        .catch((error) => {
+          setIsLoading(false);
+          setRatesError(error);
+          console.error("Something bad happened!", error);
+        });
+    }, 1000);
   }, []);
 
   return { ratesData, isLoading, ratesError };
