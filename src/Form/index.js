@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { currencies } from "../currencies/currencies";
+// import { currencies } from "../currencies/currencies";
 import { useRatesData } from "./useRatesData";
 import {
   MainForm,
@@ -10,39 +10,57 @@ import {
   FormButton,
 } from "./styled.js";
 
-const DEFAULT_CURRENCY = currencies[0].shortcut;
+// const DEFAULT_CURRENCY = currencies[0].shortcut;
 
 const Form = () => {
   const [amount, setAmount] = useState("");
-  const [currency, setCurrency] = useState(DEFAULT_CURRENCY);
+  const [currency, setCurrency] = useState("EUR");
   const [result, setResult] = useState({
     toAmount: 0,
     fromAmount: 0,
   });
 
-  const { ratesData, isLoading, ratesError } = useRatesData;
-  console.log(ratesData, isLoading, ratesError);
+  const { ratesData, isLoading, ratesError } = useRatesData();
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <MainForm>⏳ Loading... Please wait.</MainForm>
+      </div>
+    );
   }
 
   if (ratesError) {
-    return <div>Error: {ratesError.message}</div>;
+    return (
+      <div>
+        <MainForm>❌ Wystąpił błąd: {ratesError.message}</MainForm>
+      </div>
+    );
   }
 
-  const currenciesList = currencies.map((currency) => (
-    <option key={currency.name} value={currency.shortcut}>
-      {currency.shortcut} - {currency.name}
+  const currenciesList = Object.keys(ratesData).map((currency) => (
+    <option key={currency} value={currency}>
+      {currency}
     </option>
   ));
 
+  // const currenciesList = currencies.map((currency) => (
+  //   <option key={currency.name} value={currency.shortcut}>
+  //     {currency.shortcut} - {currency.name}
+  //   </option>
+  // ));
+
+  // console.log(Object.keys(ratesData));
+  // console.log(currencies);
+  // console.log(ratesData);
+
   const updateResult = (currency, amount) => {
-    const rate = currencies.find(({ shortcut }) => shortcut === currency).rate;
+    // const rate = currencies.find(({ shortcut }) => shortcut === currency).rate;
+    const rate = ratesData[currency];
 
     setResult({
       fromAmount: amount,
-      toAmount: amount / rate,
+      toAmount: amount * rate,
       currency: currency,
     });
   };
@@ -63,7 +81,9 @@ const Form = () => {
       toAmount: 0,
     });
     setAmount("");
-    setCurrency(DEFAULT_CURRENCY);
+    // setCurrency("DEFAULT_CURRENCY");
+    // setCurrency("USD");
+    setCurrency(Object.keys(ratesData)[1]);
   };
 
   return (
