@@ -6,9 +6,9 @@ export const useRatesData = () => {
   const [ratesData, setRatesData] = useState({});
 
   useEffect(() => {
-    const requestURL = "currency-converter-react/testData.json";
-    // const requestURL =
-    //   "https://api.exchangerate.host/latest?base=PLN&symbols=EUR,USD,GBP,CHF";
+    // const requestURL = "currency-converter-react/testData.json";
+    const requestURL =
+      "https://api.exchangerate.host/latest?base=PLN&symbols=EUR,USD,GBP,CHF";
 
     setTimeout(() => {
       fetch(requestURL)
