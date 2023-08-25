@@ -25,7 +25,7 @@ const Form = () => {
   if (isLoading) {
     return (
       <div>
-        <MainForm>⏳ Loading... Please wait.</MainForm>
+        <MainForm>⏳ Ładowanie... Proszę czekać.</MainForm>
       </div>
     );
   }
@@ -75,7 +75,8 @@ const Form = () => {
     updateResult(currency, amount);
   };
 
-  const reset = () => {
+  const reset = (event) => {
+    event.preventDefault();
     setResult({
       fromAmount: 0,
       toAmount: 0,
