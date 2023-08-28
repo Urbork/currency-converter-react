@@ -1,5 +1,4 @@
 import { useState } from "react";
-// import { currencies } from "../currencies/currencies";
 import { useRatesData } from "./useRatesData";
 import {
   MainForm,
@@ -9,8 +8,6 @@ import {
   FormInput,
   FormButton,
 } from "./styled.js";
-
-// const DEFAULT_CURRENCY = currencies[0].shortcut;
 
 const Form = () => {
   const [amount, setAmount] = useState("");
@@ -44,18 +41,7 @@ const Form = () => {
     </option>
   ));
 
-  // const currenciesList = currencies.map((currency) => (
-  //   <option key={currency.name} value={currency.shortcut}>
-  //     {currency.shortcut} - {currency.name}
-  //   </option>
-  // ));
-
-  // console.log(Object.keys(ratesData));
-  // console.log(currencies);
-  // console.log(ratesData);
-
   const updateResult = (currency, amount) => {
-    // const rate = currencies.find(({ shortcut }) => shortcut === currency).rate;
     const rate = ratesData[currency];
 
     setResult({
@@ -82,8 +68,6 @@ const Form = () => {
       toAmount: 0,
     });
     setAmount("");
-    // setCurrency("DEFAULT_CURRENCY");
-    // setCurrency("USD");
     setCurrency(Object.keys(ratesData)[1]);
   };
 
