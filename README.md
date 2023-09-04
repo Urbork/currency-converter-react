@@ -2,9 +2,9 @@
 
 It is a very simple converter that allows for the quick conversion of PLN into other currencies
 
-https://urbork.github.io/currency-converter-react/
+![preview](https://i.imgur.com/URsu8lF.jpg)
 
-![preview](https://i.postimg.cc/MpWPjdB6/converter-readme-preview.jpg)
+DEMO: https://urbork.github.io/currency-converter-react/
 
 ## Technologies used:
 
@@ -15,6 +15,8 @@ https://urbork.github.io/currency-converter-react/
 - React
 - Babel
 - Webpack
+- Styled Components
+- Connecting with API
 
 # Getting Started with Create React App
 
