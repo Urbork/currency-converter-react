@@ -37,7 +37,7 @@ const Form = () => {
 
   const currenciesList = Object.keys(ratesData).map((currency) => (
     <option key={currency} value={currency}>
-      {currency}
+      {currency} | {(1 / ratesData[currency]).toFixed(4)}
     </option>
   ));
 
