@@ -5,11 +5,11 @@ export const useRatesData = () => {
   const [ratesError, setRatesError] = useState(false);
   const [ratesData, setRatesData] = useState({});
 
-  useEffect(() => {
-    // const requestURL = "currency-converter-react/testData.json";
-    const requestURL =
-      "https://api.exchangerate.host/latest?base=PLN&symbols=EUR,USD,GBP,CHF";
+  // const requestURL = "currency-converter-react/testData.json";
+  const requestURL =
+    "https://api.exchangerate.host/latest?base=PLN&symbols=EUR,USD,GBP,CHF";
 
+  useEffect(() => {
     setTimeout(() => {
       fetch(requestURL)
         .then((response) => response.json())
@@ -20,7 +20,6 @@ export const useRatesData = () => {
         .catch((error) => {
           setIsLoading(false);
           setRatesError(error);
-          console.error("Something bad happened!", error);
         });
     }, 1000);
   }, []);
