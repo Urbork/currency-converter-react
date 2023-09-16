@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 
 export const useRatesData = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [ratesError, setRatesError] = useState(false);
-  const [ratesData, setRatesData] = useState({});
+  const [ratesData, setRatesData] = useState({
+    isLoading: true,
+  });
 
   // const requestURL = "currency-converter-react/testData.json";
   const requestURL =
@@ -14,15 +14,20 @@ export const useRatesData = () => {
       fetch(requestURL)
         .then((response) => response.json())
         .then((data) => {
-          setIsLoading(false);
-          setRatesData(data.rates);
+          setRatesData({
+            isLoading: false,
+            data: data,
+            date: data.date,
+          });
         })
         .catch((error) => {
-          setIsLoading(false);
-          setRatesError(error);
+          setRatesData({
+            isLoading: false,
+            error: error,
+          });
         });
     }, 1000);
   }, []);
 
-  return { ratesData, isLoading, ratesError };
+  return { ratesData };
 };

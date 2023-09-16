@@ -17,9 +17,9 @@ const Form = () => {
     fromAmount: 0,
   });
 
-  const { ratesData, isLoading, ratesError } = useRatesData();
+  const { ratesData } = useRatesData();
 
-  if (isLoading) {
+  if (ratesData.isLoading) {
     return (
       <div>
         <MainForm>⏳ Ładowanie... Proszę czekać.</MainForm>
@@ -27,22 +27,22 @@ const Form = () => {
     );
   }
 
-  if (ratesError) {
+  if (ratesData.error) {
     return (
       <div>
-        <MainForm>❌ Wystąpił błąd: {ratesError.message}</MainForm>
+        <MainForm>❌ Wystąpił błąd: {ratesData.error.message}</MainForm>
       </div>
     );
   }
 
-  const currenciesList = Object.keys(ratesData).map((currency) => (
+  const currenciesList = Object.keys(ratesData.data.rates).map((currency) => (
     <option key={currency} value={currency}>
-      {currency} | {(1 / ratesData[currency]).toFixed(4)}
+      {currency} | {(1 / ratesData.data.rates[currency]).toFixed(4)}
     </option>
   ));
 
   const updateResult = (currency, amount) => {
-    const rate = ratesData[currency];
+    const rate = ratesData.data.rates[currency];
 
     setResult({
       fromAmount: amount,
@@ -68,7 +68,7 @@ const Form = () => {
       toAmount: 0,
     });
     setAmount("");
-    setCurrency(Object.keys(ratesData)[1]);
+    setCurrency(Object.keys(ratesData.data.rates)[1]);
   };
 
   return (
@@ -118,6 +118,7 @@ const Form = () => {
           {result.currency}
         </strong>
       </p>
+      <p>Kursy walut zostały pobrane dnia: {ratesData.data.date}</p>
     </MainForm>
   );
 };
