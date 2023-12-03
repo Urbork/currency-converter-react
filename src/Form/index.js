@@ -118,7 +118,10 @@ const Form = () => {
           {result.currency}
         </strong>
       </p>
-      <p>Kursy walut zostały pobrane dnia: {ratesData.data.date}</p>
+
+      <p>
+        Kursy walut zostały pobrane dnia: <strong>{ratesData.data.date}</strong>
+      </p>
     </MainForm>
   );
 };
