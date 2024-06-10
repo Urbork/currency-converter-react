@@ -67,5 +67,3 @@ npm start
 ```
 
 This command will start the application in developer mode and open it in a browser at http://localhost:3000
-
-[Back to top](#currency-converter)
