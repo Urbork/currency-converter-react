@@ -1,4 +1,4 @@
-# 🎬 [Currency Converter](https://urbork.github.io/currency-converter-react/)
+# 💵 [Currency Converter](https://urbork.github.io/currency-converter-react/)
 
 - [Overview](#-overview)
 - [Features](#-features)
