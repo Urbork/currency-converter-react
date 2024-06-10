@@ -1,14 +1,30 @@
-# Currency Converter
+# 🎬 [Currency Converter](https://urbork.github.io/currency-converter-react/)
+
+- [Overview](#-overview)
+- [Features](#-features)
+- [Technologies Used](#-technologies-used)
+- [Setup](#-setup)
+
+## ▶ Overview
 
 It is a very simple converter that allows for the quick conversion of PLN into other currencies
 
+Check it out: https://urbork.github.io/currency-converter-react/
+
 ![preview](https://i.imgur.com/URsu8lF.jpg)
 
-DEMO: https://urbork.github.io/currency-converter-react/
+## ⭐ Features
 
-## Technologies used:
+- **Up-to-date Rates:** Application fetches data from a reliable API.
+
+- **Multi-Currency Support:** Convert PLN to a wide range of international currencies.
+- **User-Friendly Interface:** Simple and intuitive interface for easy currency conversion.
+- **Responsive Design:** Optimized for both desktop and mobile devices for on-the-go conversions.
+
+## ⚙ Technologies Used
 
 - HTML
+
 - CSS
 - JavaScript
 - BEM
@@ -18,38 +34,38 @@ DEMO: https://urbork.github.io/currency-converter-react/
 - Styled Components
 - Connecting with API
 
-# Getting Started with Create React App
+## 💻 Setup
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To run the program from the repository on your local computer, follow these steps:
 
-## Available Scripts
+### 1. Downloading the Source Code
 
-In the project directory, you can run:
+Clone the Repository to your computer using the command:
 
-### `npm start`
+```commandline
+git clone https://github.com/Urbork/currency-converter-react.git
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 2. Installing Dependencies
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Navigate to the project directory:
 
-### `npm run build`
+```commandline
+cd currency-converter-react
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Install all required dependencies using a package manager like npm:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```commandline
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 3. Running the Application
 
-### `npm run eject`
+```commandline
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+This command will start the application in developer mode and open it in a browser at http://localhost:3000
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+[Back to top](#currency-converter)
