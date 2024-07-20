@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://urbork.github.io/currency-converter-react/",
   "dependencies": {
+    "@tanstack/react-query": "^5.51.9",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
