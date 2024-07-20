@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "last_updated_at": "2024-05-24T23:59:59Z"
+  },
+  "data": {
+    "EUR": {
+      "code": "EUR",
+      "value": 0.2355706494
+    },
+    "GBP": {
+      "code": "GBP",
+      "value": 0.2006876744
+    },
+    "USD": {
+      "code": "USD",
+      "value": 0.2556465442
+    },
+    "CHF": {
+      "code": "CHF",
+      "value": 0.2336865492
+    }
+  }
+}

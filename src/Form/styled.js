@@ -28,7 +28,7 @@ export const FormLabel = styled.label`
 `;
 
 export const FormInput = styled.input`
-  width: 30%;
+  min-width: 20%;
   margin-left: 16px;
   padding: 8px;
   border: 2px solid ${({ theme }) => theme.color.green};
@@ -43,7 +43,6 @@ export const FormButton = styled.button`
   color: ${({ theme }) => theme.color.green};
   border: 2px solid ${({ theme }) => theme.color.green};
   border-radius: 8px;
-  box-shadow: 0 1px 5px ${({ theme }) => theme.color.green};
   transition: 0.5s;
   cursor: pointer;
 
@@ -59,6 +58,10 @@ export const FormButton = styled.button`
       padding: 4px 8px;
       font-size: 12px;
       font-weight: normal;
-      border: none;
+      border: 1px solid ${({ theme }) => theme.color.green};
     `}
+`;
+
+export const FormInfo = styled.p`
+  font-size: 12px;
 `;

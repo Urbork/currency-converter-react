@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useRatesData } from "./useRatesData";
 import {
   MainForm,
   Fieldset,
@@ -7,7 +6,10 @@ import {
   FormLabel,
   FormInput,
   FormButton,
+  FormInfo,
 } from "./styled.js";
+import { useQuery } from "@tanstack/react-query";
+import { ratesQueryOptions } from "./queries/ratesQueryOptions.js";
 
 const Form = () => {
   const [amount, setAmount] = useState("");
@@ -17,9 +19,9 @@ const Form = () => {
     fromAmount: 0,
   });
 
-  const { ratesData } = useRatesData();
+  const { data: ratesData, isPending, isError } = useQuery(ratesQueryOptions);
 
-  if (ratesData.isLoading) {
+  if (isPending) {
     return (
       <div>
         <MainForm>⏳ Ładowanie... Proszę czekać.</MainForm>
@@ -27,22 +29,32 @@ const Form = () => {
     );
   }
 
-  if (ratesData.error) {
+  if (isError) {
     return (
       <div>
-        <MainForm>❌ Wystąpił błąd: {ratesData.error.message}</MainForm>
+        <MainForm>❌ Wystąpił błąd... Spróbuj później.</MainForm>
       </div>
     );
   }
 
-  const currenciesList = Object.keys(ratesData.data.rates).map((currency) => (
-    <option key={currency} value={currency}>
-      {currency} | {(1 / ratesData.data.rates[currency]).toFixed(4)}
-    </option>
-  ));
+  const currenciesList =
+    ratesData && ratesData.data
+      ? Object.keys(ratesData.data).map((currency) => (
+          <option key={currency} value={currency}>
+            {currency}
+          </option>
+        ))
+      : null;
+
+  const updateDate = new Date(ratesData.meta.last_updated_at);
+  const localDateTime = `${updateDate.toLocaleString(undefined, {
+    day: "numeric",
+    month: "numeric",
+    year: "numeric",
+  })}`;
 
   const updateResult = (currency, amount) => {
-    const rate = ratesData.data.rates[currency];
+    const rate = ratesData.data[currency]?.value ?? 0;
 
     setResult({
       fromAmount: amount,
@@ -57,7 +69,6 @@ const Form = () => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-
     updateResult(currency, amount);
   };
 
@@ -68,7 +79,7 @@ const Form = () => {
       toAmount: 0,
     });
     setAmount("");
-    setCurrency(Object.keys(ratesData.data.rates)[1]);
+    setCurrency(Object.keys(ratesData.data)[0]);
   };
 
   return (
@@ -77,7 +88,7 @@ const Form = () => {
         <FormLegend>Chcę wymienić</FormLegend>
         <p>
           <FormLabel>
-            Kwota w PLN*:
+            Kwota:
             <FormInput
               type="number"
               placeholder="podaj kwotę"
@@ -103,8 +114,21 @@ const Form = () => {
             </FormInput>
           </FormLabel>
         </p>
+        {/* <p>
+          <FormLabel>
+            Wynik:
+            <FormInput
+              type="number"
+              placeholder="wynik"
+              min="0"
+              step="0.01"
+              value={result.toAmount.toFixed(2)}
+              disabled
+            />
+          </FormLabel>
+        </p> */}
       </Fieldset>
-      <p>* - Pole obowiązkowe</p>
+
       <p>
         <FormButton>Przelicz</FormButton>
         <FormButton reset type="reset" onClick={reset}>
@@ -118,10 +142,7 @@ const Form = () => {
           {result.currency}
         </strong>
       </p>
-
-      <p>
-        Kursy walut zostały pobrane dnia: <strong>{ratesData.data.date}</strong>
-      </p>
+      <FormInfo>Kursy walut zostały pobrane dnia: {localDateTime}</FormInfo>
     </MainForm>
   );
 };
